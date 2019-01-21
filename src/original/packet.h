@@ -18,8 +18,10 @@
 
 #include <termios.h>
 
+#ifdef WITH_OPENSSL
 #include <openssl/bn.h>
 #include <openssl/ec.h>
+#endif
 #include <sys/signal.h>
 #include <sys/queue.h>
 
