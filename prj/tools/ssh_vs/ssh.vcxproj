@@ -127,8 +127,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/.tmp/include;../../../src/.tmp/include/wlac;../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>openssh_first_include.h</ForcedIncludeFiles>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../../../contrib/wlac/sys/$(TargetFolderBase)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usergroupid.lib;wlac.lib;rfc.lib</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -136,8 +141,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/.tmp/include;../../../src/.tmp/include/wlac;../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>openssh_first_include.h</ForcedIncludeFiles>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../../../contrib/wlac/sys/$(TargetFolderBase)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usergroupid.lib;wlac.lib;rfc.lib</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
@@ -145,8 +155,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/.tmp/include;../../../src/.tmp/include/wlac;../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>openssh_first_include.h</ForcedIncludeFiles>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../../../contrib/wlac/sys/$(TargetFolderBase)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usergroupid.lib;wlac.lib;rfc.lib</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -156,11 +171,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/.tmp/include;../../../src/.tmp/include/wlac;../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>openssh_first_include.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../contrib/wlac/sys/$(TargetFolderBase)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usergroupid.lib;wlac.lib;rfc.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -171,11 +189,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/.tmp/include;../../../src/.tmp/include/wlac;../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>openssh_first_include.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../contrib/wlac/sys/$(TargetFolderBase)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usergroupid.lib;wlac.lib;rfc.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -186,15 +207,34 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../src/.tmp/include;../../../src/.tmp/include/wlac;../../../contrib/wlac/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>openssh_first_include.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>../../../contrib/wlac/sys/$(TargetFolderBase)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>usergroupid.lib;wlac.lib;rfc.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\.tmp\src\missing_functions_from_ssh.cpp" />
+    <ClCompile Include="..\..\..\src\.tmp\src\wlac_missing.cpp" />
+    <ClCompile Include="..\..\..\src\original\clientloop.c" />
+    <ClCompile Include="..\..\..\src\original\readconf.c" />
     <ClCompile Include="..\..\..\src\original\ssh.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\.tmp\include\openssh_first_include.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\vis.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\glob.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\netinet\ip.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\paths.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\util.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\vis.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\wlac_missing.h" />
+    <ClInclude Include="..\..\..\src\original\clientloop.h" />
+    <ClInclude Include="..\..\..\src\original\readconf.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,10 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\wlac">
+      <UniqueIdentifier>{7a307bf6-ae6c-40e7-81ff-bfc872c61fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wlac\netinet">
+      <UniqueIdentifier>{cf353d0b-9850-4e96-9825-6585df274861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wlac\bsd">
+      <UniqueIdentifier>{663e3585-3f91-4707-b6a1-7db94d206370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{6bbdd5aa-963c-4add-9d1f-e7c3d206257f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\original">
+      <UniqueIdentifier>{28436e82-ca9c-4638-a419-2e499e83768d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\original\ssh.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\.tmp\src\wlac_missing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\.tmp\src\missing_functions_from_ssh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\original\readconf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\original\clientloop.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\glob.h">
+      <Filter>Header Files\wlac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\netinet\ip.h">
+      <Filter>Header Files\wlac\netinet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\vis.h">
+      <Filter>Header Files\wlac\bsd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\vis.h">
+      <Filter>Header Files\wlac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\wlac_missing.h">
+      <Filter>Header Files\wlac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\paths.h">
+      <Filter>Header Files\wlac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\util.h">
+      <Filter>Header Files\wlac</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\openssh_first_include.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\original\readconf.h">
+      <Filter>Header Files\original</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\original\clientloop.h">
+      <Filter>Header Files\original</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

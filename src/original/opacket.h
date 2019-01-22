@@ -7,8 +7,6 @@ void     ssh_packet_start(struct ssh *, u_char);
 void     ssh_packet_put_char(struct ssh *, int ch);
 void     ssh_packet_put_int(struct ssh *, u_int value);
 void     ssh_packet_put_int64(struct ssh *, u_int64_t value);
-void     ssh_packet_put_bignum2(struct ssh *, BIGNUM * value);
-void     ssh_packet_put_ecpoint(struct ssh *, const EC_GROUP *, const EC_POINT *);
 void     ssh_packet_put_string(struct ssh *, const void *buf, u_int len);
 void     ssh_packet_put_cstring(struct ssh *, const char *str);
 void     ssh_packet_put_raw(struct ssh *, const void *buf, u_int len);
@@ -17,10 +15,15 @@ void     ssh_packet_send(struct ssh *);
 u_int	 ssh_packet_get_char(struct ssh *);
 u_int	 ssh_packet_get_int(struct ssh *);
 u_int64_t ssh_packet_get_int64(struct ssh *);
-void     ssh_packet_get_bignum2(struct ssh *, BIGNUM * value);
-void	 ssh_packet_get_ecpoint(struct ssh *, const EC_GROUP *, EC_POINT *);
 void	*ssh_packet_get_string(struct ssh *, u_int *length_ptr);
 char	*ssh_packet_get_cstring(struct ssh *, u_int *length_ptr);
+
+#ifdef WITH_OPENSSL
+void     ssh_packet_put_bignum2(struct ssh *, BIGNUM * value);
+void     ssh_packet_put_ecpoint(struct ssh *, const EC_GROUP *, const EC_POINT *);
+void     ssh_packet_get_bignum2(struct ssh *, BIGNUM * value);
+void	 ssh_packet_get_ecpoint(struct ssh *, const EC_GROUP *, EC_POINT *);
+#endif  // #ifdef WITH_OPENSSL
 
 /* don't allow remaining bytes after the end of the message */
 #define ssh_packet_check_eom(ssh) \
@@ -91,9 +94,9 @@ void	 packet_read_expect(int expected_type);
 	ssh_packet_get_string_ptr(active_state, (length_ptr))
 #define packet_get_cstring(length_ptr) \
 	ssh_packet_get_cstring(active_state, (length_ptr))
-#define packet_send_debug(fmt, args...) \
+#define packet_send_debug(fmt, ...) \
 	ssh_packet_send_debug(active_state, (fmt), ##args)
-#define packet_disconnect(fmt, args...) \
+#define packet_disconnect(fmt, ...) \
 	ssh_packet_disconnect(active_state, (fmt), ##args)
 #define packet_have_data_to_write() \
 	ssh_packet_have_data_to_write(active_state)

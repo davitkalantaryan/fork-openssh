@@ -143,10 +143,12 @@ struct kex {
 	    const u_char *, size_t, const char *, u_int);
 	int	(*kex[KEX_MAX])(struct ssh *);
 	/* kex specific state */
+#ifdef WITH_OPENSSL
 	DH	*dh;			/* DH */
 	u_int	min, max, nbits;	/* GEX */
 	EC_KEY	*ec_client_key;		/* ECDH */
 	const EC_GROUP *ec_group;	/* ECDH */
+#endif  // #ifdef WITH_OPENSSL
 	u_char c25519_client_key[CURVE25519_SIZE]; /* 25519 */
 	u_char c25519_client_pubkey[CURVE25519_SIZE]; /* 25519 */
 };
@@ -193,9 +195,11 @@ int	 kexgex_hash(int, const char *, const char *,
     const BIGNUM *, const BIGNUM *,
     u_char *, size_t *);
 
+#ifdef WITH_OPENSSL
 int kex_ecdh_hash(int, const EC_GROUP *, const char *, const char *,
     const u_char *, size_t, const u_char *, size_t, const u_char *, size_t,
     const EC_POINT *, const EC_POINT *, const BIGNUM *, u_char *, size_t *);
+#endif  // #ifdef WITH_OPENSSL
 
 int	 kex_c25519_hash(int, const char *, const char *,
     const u_char *, size_t, const u_char *, size_t,
