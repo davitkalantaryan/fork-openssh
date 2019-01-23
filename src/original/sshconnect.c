@@ -763,7 +763,9 @@ get_hostfile_hostname_ipaddr(char *hostname, struct sockaddr *hostaddr,
 	 */
 	if (hostfile_ipaddr != NULL) {
 		if (options.proxy_command == NULL) {
-			if (getnameinfo(hostaddr, hostaddr->sa_len,
+            //if (getnameinfo(hostaddr, hostaddr->sa_len,
+            //if (getnameinfo(hostaddr, ((struct sockaddr_in*)hostaddr)->sa_len,
+            if (getnameinfo(hostaddr, sizeof(*hostaddr),
 			    ntop, sizeof(ntop), NULL, 0, NI_NUMERICHOST) != 0)
 			fatal("%s: getnameinfo failed", __func__);
 			*hostfile_ipaddr = put_host_port(ntop, port);

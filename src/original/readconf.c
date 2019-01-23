@@ -34,7 +34,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <util.h>
-#include <vis.h>
+#include <bsd/vis.h>
 
 #include "xmalloc.h"
 #include "ssh.h"

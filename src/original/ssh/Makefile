@@ -13,7 +13,7 @@ PROG=	ssh
 BINDIR=	/usr/bin
 MAN=	ssh.1 ssh_config.5
 
-.include <bsd.own.mk>
+#.include <bsd.own.mk>
 
 KERBEROS5=no
 
@@ -21,7 +21,7 @@ KERBEROS5=no
 CFLAGS+= -DKRB5 -I${DESTDIR}/usr/include/kerberosV -DGSSAPI
 .endif # KERBEROS5
 
-.include <bsd.prog.mk>
+#.include <bsd.prog.mk>
 
 .if (${KERBEROS5:L} == "yes")
 DPADD+=  ${LIBGSSAPI} ${LIBKRB5}

@@ -1,7 +1,7 @@
 // 
 // file:			util.h
 // created on:		2019 Jan 22
-// doc on header:	???
+// doc on header:	https://www.gnu.org/software/libcdio/doxygen/util_8h.html 
 // 
 
 #ifndef __wlac_util_h__

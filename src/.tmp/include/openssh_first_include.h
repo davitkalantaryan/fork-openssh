@@ -13,6 +13,8 @@
 extern "C" {
 #endif
 
+#ifdef _WIN32
+
 #ifndef CINTERFACE
 #define CINTERFACE
 #endif
@@ -168,6 +170,28 @@ size_t strlcpy(char *dst, const char *src, size_t size);
 size_t strlcat(char *dst, const char *src, size_t size);
 
 int asprintf(char **strp, const char *fmt, ...);
+
+#else   // #ifdef _WIN32
+
+//#error my error
+#define __USE_GNU
+#include <netdb.h>
+#ifndef EAI_NODATA
+#  define EAI_NODATA	  -5	/* No address associated with NAME.  */
+#endif
+
+#include <netinet/in.h>
+#include <netinet/ip.h>
+#ifndef IPTOS_DSCP_CS1
+#define IPTOS_DSCP_CS1  5
+#endif
+
+#include <sys/queue.h>
+#if !defined(TAILQ_FOREACH_SAFE) && !defined(TAILQ_FOREACH_SAFE_defined)
+#define TAILQ_FOREACH_SAFE(_id, _files, _next, _tmp)    TAILQ_FOREACH(_id, _files, _next)
+#endif
+
+#endif  // #ifdef _WIN32
 
 
 #ifdef __cplusplus

@@ -90,6 +90,7 @@ WLAC_TMP_API ssize_t getline(char **lineptr, size_t *n, FILE *stream)
 
 // 
 // https://linux.die.net/man/3/vis 
+// libbsd
 // 
 WLAC_TMP_API char * vis(char *dst, int c, int flag, int nextc)
 {

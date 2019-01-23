@@ -26,6 +26,8 @@
 #ifndef DH_H
 #define DH_H
 
+#ifdef WITH_OPENSSL
+
 struct dhgroup {
 	int size;
 	BIGNUM *g;
@@ -43,6 +45,8 @@ DH	*dh_new_group_fallback(int);
 
 int	 dh_gen_key(DH *, int);
 int	 dh_pub_is_valid(const DH *, const BIGNUM *);
+
+#endif  // #ifdef WITH_OPENSSL
 
 u_int	 dh_estimate(int);
 

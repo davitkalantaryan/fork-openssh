@@ -38,7 +38,7 @@
 #include <signal.h>
 #include <pwd.h>
 #include <unistd.h>
-#include <vis.h>
+#include <bsd/vis.h>
 
 #include "xmalloc.h"
 #include "ssh.h"
@@ -1559,7 +1559,8 @@ pubkey_prepare(Authctxt *authctxt)
 		authctxt->agent_fd = agent_fd;
 	}
 	/* Prefer PKCS11 keys that are explicitly listed */
-	TAILQ_FOREACH_SAFE(id, &files, next, tmp) {
+    //TAILQ_FOREACH_SAFE(id, &files, next, tmp) {
+    TAILQ_FOREACH_SAFE(id, &files, next, tmp) {
 		if (id->key == NULL || (id->key->flags & SSHKEY_FLAG_EXT) == 0)
 			continue;
 		found = 0;
