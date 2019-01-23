@@ -3,13 +3,21 @@
 // created on:	2019 Jan 22
 // 
 
+
+__BEGIN_C_DECLS
+
+
+#ifndef CINTERFACE
+#define CINTERFACE
+#endif
+
 #include "wlac_missing.h"
 #include <Windows.h>
 #include <stdint.h>
 #include <glob.h>
-
-
-__BEGIN_C_DECLS
+#include <direct.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 // 
 // https://www.freebsd.org/cgi/man.cgi?query=closefrom&sektion=2&manpath=freebsd-release-ports
@@ -88,5 +96,23 @@ WLAC_TMP_API char * vis(char *dst, int c, int flag, int nextc)
 	return dst;
 }
 
+
+// 
+// https://linux.die.net/man/3/mkdtemp
+// https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/mktemp-wmktemp?view=vs-2017
+//#define mkdtemp	_mktemp    // should be in stdlib.h
+//
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning (disable:4996)
+#endif
+WLAC_TMP_API char *mkdtemp(char *a_templateName)
+{
+	_mkdir(_mktemp(a_templateName));
+	return a_templateName;
+}
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 __END_C_DECLS

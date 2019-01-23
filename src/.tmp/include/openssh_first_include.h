@@ -1,18 +1,28 @@
-#pragma once
+// 
+// file:			openssh_first_include.h
+// created on:		2019 Jan 22
+// 
 
-// file openssh_first_include.h
+#ifndef __openssh_first_include_h__
+#define __openssh_first_include_h__
 
-#define _USE_NEW_STRUCTS
+//#define _USE_NEW_STRUCTS
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#ifndef CINTERFACE
+#define CINTERFACE
+#endif
+
+#include <first_includes/common_include_for_headers.h>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <Windows.h>
 #include <stdint.h>
+//#include <redesigned/stdio.h>
 
 #pragma warning(disable:4996)
 #pragma warning(disable:4244)
@@ -20,13 +30,6 @@ extern "C" {
 #pragma warning(disable:4133)
 #pragma warning(disable:4018)
 
-#ifdef _USE_NEW_STRUCTS
-
-struct channel_confirms{
-	int m1;
-};
-
-#endif
 
 #ifndef __attribute__
 #define __attribute__(...)
@@ -170,3 +173,7 @@ int asprintf(char **strp, const char *fmt, ...);
 #ifdef __cplusplus
 }
 #endif
+
+
+
+#endif   // #ifndef __openssh_first_include_h__
