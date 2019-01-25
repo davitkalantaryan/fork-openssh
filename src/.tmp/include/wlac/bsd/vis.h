@@ -25,6 +25,7 @@
 
 __BEGIN_C_DECLS
 
+WLAC_TMP_API char * vis(char *dst, int c, int flag, int nextc);		// lib: (libbsd, -lbsd)
 
 __END_C_DECLS
 

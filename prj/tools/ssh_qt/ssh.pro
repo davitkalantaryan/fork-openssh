@@ -13,6 +13,12 @@ INCLUDEPATH += /usr/include/cdio
 INCLUDEPATH += ../../../src/.tmp/include
 QMAKE_CXXFLAGS += "-include openssh_first_include.h"
 QMAKE_CFLAGS += "-include openssh_first_include.h"
+QMAKE_CXXFLAGS_WARN_ON += -Wno-attributes
+QMAKE_CFLAGS_WARN_ON += -Wno-attributes
+QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-parameter
+QMAKE_CFLAGS_WARN_ON += -Wno-unused-parameter
+QMAKE_CXXFLAGS_WARN_ON += -Wno-type-limits
+QMAKE_CFLAGS_WARN_ON += -Wno-type-limits
 
 SOURCES +=  \
     ../../../src/original/ssh.c \

@@ -72,11 +72,11 @@
 #include <paths.h>
 #include <signal.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
 #include <termios.h>
 #include <pwd.h>
-#include <unistd.h>
+#include <bsd/unistd.h>
 #include <limits.h>
 
 #include "xmalloc.h"

@@ -34,10 +34,10 @@
 #include <fcntl.h>
 #include <netdb.h>
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 #include <signal.h>
 #include <pwd.h>
-#include <unistd.h>
+#include <bsd/unistd.h>
 #include <bsd/vis.h>
 
 #include "xmalloc.h"

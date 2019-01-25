@@ -56,9 +56,6 @@
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\vis.h">
       <Filter>Header Files\wlac\bsd</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\.tmp\include\wlac\vis.h">
-      <Filter>Header Files\wlac</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\wlac_missing.h">
       <Filter>Header Files\wlac</Filter>
     </ClInclude>
@@ -76,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\original\clientloop.h">
       <Filter>Header Files\original</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\string.h">
+      <Filter>Header Files\wlac\bsd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\stdlib.h">
+      <Filter>Header Files\wlac\bsd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\unistd.h">
+      <Filter>Header Files\wlac\bsd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\first_wlac_bsd_include.h">
+      <Filter>Header Files\wlac\bsd</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

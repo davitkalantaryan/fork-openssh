@@ -58,9 +58,9 @@
 #include <signal.h>
 #include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include <bsd/unistd.h>
 #include <limits.h>
 #include <locale.h>
 

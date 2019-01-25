@@ -13,6 +13,10 @@
 extern "C" {
 #endif
 
+#include <stddef.h>
+
+void * recallocarray(void *ptr, size_t oldnmemb, size_t newnmemb, size_t size);
+
 #ifdef _WIN32
 
 #ifndef CINTERFACE
@@ -20,6 +24,7 @@ extern "C" {
 #endif
 
 #include <first_includes/common_include_for_headers.h>
+//#include <bsd/first_wlac_bsd_include.h>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <Windows.h>
@@ -162,14 +167,6 @@ struct evp_pkey_st {
 
 #endif  // #ifdef WITH_OPENSSL
 
-//#define arc4random_buf()
-void arc4random_buf(void *buf, size_t nbytes);
-
-// #define strlcpy strncpy
-size_t strlcpy(char *dst, const char *src, size_t size);
-size_t strlcat(char *dst, const char *src, size_t size);
-
-int asprintf(char **strp, const char *fmt, ...);
 
 #else   // #ifdef _WIN32
 
@@ -190,6 +187,10 @@ int asprintf(char **strp, const char *fmt, ...);
 #if !defined(TAILQ_FOREACH_SAFE) && !defined(TAILQ_FOREACH_SAFE_defined)
 #define TAILQ_FOREACH_SAFE(_id, _files, _next, _tmp)    TAILQ_FOREACH(_id, _files, _next)
 #endif
+
+int  scan_scaled(char *number_w_scale, long long *result);  // header: util.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
+void explicit_bzero(void *b, size_t len);                   // header: strings.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
+int  pledge(const char *promises, const char *execpromises);
 
 #endif  // #ifdef _WIN32
 

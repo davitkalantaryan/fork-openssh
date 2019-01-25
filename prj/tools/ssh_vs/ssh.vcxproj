@@ -226,12 +226,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\.tmp\include\openssh_first_include.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\first_wlac_bsd_include.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\stdlib.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\string.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\unistd.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\vis.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\glob.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\netinet\ip.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\paths.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\util.h" />
-    <ClInclude Include="..\..\..\src\.tmp\include\wlac\vis.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\wlac_missing.h" />
     <ClInclude Include="..\..\..\src\original\clientloop.h" />
     <ClInclude Include="..\..\..\src\original\readconf.h" />

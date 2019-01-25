@@ -1,6 +1,9 @@
 
 #include <stddef.h>
 #include <sys/queue.h>
+#include <bsd/stdlib.h>
+#include <bsd/unistd.h>
+//#include <bsd/str>
 
 struct global_confirm {
     TAILQ_ENTRY(global_confirm) entry;
