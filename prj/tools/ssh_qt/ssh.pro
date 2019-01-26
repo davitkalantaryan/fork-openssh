@@ -7,6 +7,17 @@
 # For making test: '$qmake "CONFIG+=TEST" daqadcreceiver.pro' , then '$make'
 include(../../common/common_qt/sys_common.pri)
 
+LIBS += -lbsd
+LIBS += -lgssapi
+LIBS += -lkrb5
+LIBS += -lasn1
+LIBS += -lwind
+LIBS += -lroken
+LIBS += -lcom_err
+LIBS += -lpthread
+LIBS += -lheimbase
+
+DEFINES += _GNU_SOURCE
 
 INCLUDEPATH += ../../../include
 INCLUDEPATH += /usr/include/cdio
@@ -32,7 +43,11 @@ SOURCES +=  \
     ../../../src/original/authfd.c \
     ../../../src/original/compat.c \
     ../../../src/original/dns.c \
-    ../../../src/original/fatal.c
+    ../../../src/original/fatal.c \
+    ../../../src/original/hostfile.c \
+    ../../../src/original/msg.c \
+    ../../../src/original/readpass.c \
+    ../../../src/original/utf8.c
 
 HEADERS += \
     ../../../src/.tmp/include/openssh_first_include.h

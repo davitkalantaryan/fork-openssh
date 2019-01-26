@@ -44,10 +44,10 @@
 #include <errno.h>
 #include <resolv.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
 #include <stdarg.h>
-#include <unistd.h>
+#include <bsd/unistd.h>
 
 #include "xmalloc.h"
 #include "match.h"

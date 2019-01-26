@@ -25,9 +25,9 @@
 #include <limits.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <vis.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include <bsd/vis.h>
 #include <wchar.h>
 
 #include "utf8.h"

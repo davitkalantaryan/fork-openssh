@@ -28,11 +28,11 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include <netdb.h>
+#include <lwres/netdb.h>
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include <bsd/stdlib.h>
 
 #include "xmalloc.h"
 #include "sshkey.h"

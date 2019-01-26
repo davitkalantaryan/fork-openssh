@@ -13,7 +13,8 @@ git submodule update --init --recursive
 ``` bash
 sudo apt-get install libcdio-dev  
 sudo apt-get install libbsd-dev  
-sudo apt-get install libpulse-dev  ???(should be tested again)  
+sudo apt-get install libpulse-dev  # ???(should be tested again)  
+sudo apt-get install libbind-dev  
 ```
 
 ## Usefull links

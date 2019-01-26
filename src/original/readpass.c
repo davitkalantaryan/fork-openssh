@@ -29,7 +29,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <paths.h>
-#include <readpassphrase.h>
+#include <bsd/readpassphrase.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
