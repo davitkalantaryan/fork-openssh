@@ -11,9 +11,13 @@
 
 
 #include <first_includes/common_include_for_headers.h>
+#ifdef LIBBSD_OVERLAY
 #pragma include_alias( <stdlib.h>, <stdlib.h> )
 #pragma include_alias( "stdlib.h", "stdlib.h" )
 #include <stdlib.h>  // should be #include_next
+#else    // #ifdef LIBBSD_OVERLAY 
+#include <stdlib.h>
+#endif   // #ifdef LIBBSD_OVERLAY
 #include <stddef.h> 
 
 

@@ -11,14 +11,21 @@
 
 
 #include <first_includes/common_include_for_headers.h>
+#ifdef LIBBSD_OVERLAY
 #pragma include_alias( <unistd.h>, <unistd.h> )
 #pragma include_alias( "unistd.h", "unistd.h" )
 #include <unistd.h>  // should be #include_next
+#else   // #ifdef LIBBSD_OVERLAY
+#include <unistd.h>
+#endif  // #ifdef LIBBSD_OVERLAY
 
 
 __BEGIN_C_DECLS
 
-WLAC_TMP_API int pledge(const char *promises, const char *execpromises);
+// 
+// function pledge is not in bsd/unistd.h should be considered, whether keep it here
+// 
+WLAC_TMP_API int pledge(const char *promises, const char *execpromises); // https://man.openbsd.org/pledge.2
 
 __END_C_DECLS
 

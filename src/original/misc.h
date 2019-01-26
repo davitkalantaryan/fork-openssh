@@ -17,6 +17,7 @@
 
 #include <sys/time.h>
 #include <sys/types.h>
+#include <stdint.h>
 
 /* Data structure for representing a forwarding request. */
 struct Forward {
@@ -26,7 +27,7 @@ struct Forward {
 	char	 *connect_host;		/* Host to connect. */
 	int	  connect_port;		/* Port to connect on connect_host. */
 	char	 *connect_path;		/* Path to connect domain socket. */
-	int	  allocated_port;	/* Dynamically allocated listen port */
+    uint32_t	  allocated_port;	/* Dynamically allocated listen port */
 	int	  handle;		/* Handle for dynamic listen ports */
 };
 

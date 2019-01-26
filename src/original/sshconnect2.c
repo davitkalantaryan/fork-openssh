@@ -1474,7 +1474,7 @@ key_type_allowed_by_config(struct sshkey *key)
 static void
 pubkey_prepare(Authctxt *authctxt)
 {
-	struct identity *id, *id2, *tmp;
+    struct identity *id, *id2;
 	struct idlist agent, files, *preferred;
 	struct sshkey *key;
 	int agent_fd = -1, i, r, found;

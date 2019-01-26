@@ -27,7 +27,12 @@ SOURCES +=  \
     ../../../src/original/sshtty.c \
     ../../../src/original/sshconnect.c \
     ../../../src/original/sshconnect2.c \
-    ../../../src/original/mux.c
+    ../../../src/original/mux.c \
+    ../../../src/original/atomicio.c \
+    ../../../src/original/authfd.c \
+    ../../../src/original/compat.c \
+    ../../../src/original/dns.c \
+    ../../../src/original/fatal.c
 
 HEADERS += \
     ../../../src/.tmp/include/openssh_first_include.h

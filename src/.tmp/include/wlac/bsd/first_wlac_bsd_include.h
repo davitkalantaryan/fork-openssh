@@ -9,6 +9,7 @@
 
 #include <first_includes/common_include_for_headers.h>
 
+#ifdef LIBBSD_OVERLAY
 #pragma include_alias( <stdlib.h>, <bsd/stdlib.h> )
 #pragma include_alias( "stdlib.h", "bsd/stdlib.h" )
 
@@ -17,6 +18,8 @@
 
 #pragma include_alias( <unistd.h>, <bsd/unistd.h> )
 #pragma include_alias( "unistd.h", "bsd/unistd.h" )
+
+#endif  // #ifdef LIBBSD_OVERLAY
 
 
 #endif  // #ifndef __wlac_bsd_first_wlac_bsd_include_h__

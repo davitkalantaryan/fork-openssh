@@ -15,6 +15,8 @@ extern "C" {
 
 #include <stddef.h>
 
+#define IOV_MAX 1024
+
 void * recallocarray(void *ptr, size_t oldnmemb, size_t newnmemb, size_t size);
 
 #ifdef _WIN32
@@ -188,9 +190,10 @@ struct evp_pkey_st {
 #define TAILQ_FOREACH_SAFE(_id, _files, _next, _tmp)    TAILQ_FOREACH(_id, _files, _next)
 #endif
 
-int  scan_scaled(char *number_w_scale, long long *result);  // header: util.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
-void explicit_bzero(void *b, size_t len);                   // header: strings.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
-int  pledge(const char *promises, const char *execpromises);
+int  scan_scaled(char *number_w_scale, long long *result);		// header: util.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
+void explicit_bzero(void *b, size_t len);						// header: strings.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
+int  pledge(const char *promises, const char *execpromises);	// header: unistd.h; lib: Standars C (https://man.openbsd.org/pledge.2 )
+void freezero(void *ptr, size_t size);							// header: stdlib.h; lib: ??? (https://man.openbsd.org/malloc.3 )
 
 #endif  // #ifdef _WIN32
 

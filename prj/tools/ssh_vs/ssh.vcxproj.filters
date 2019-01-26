@@ -16,17 +16,23 @@
     <Filter Include="Header Files\wlac">
       <UniqueIdentifier>{7a307bf6-ae6c-40e7-81ff-bfc872c61fa8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\wlac\netinet">
-      <UniqueIdentifier>{cf353d0b-9850-4e96-9825-6585df274861}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\wlac\bsd">
-      <UniqueIdentifier>{663e3585-3f91-4707-b6a1-7db94d206370}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\include">
       <UniqueIdentifier>{6bbdd5aa-963c-4add-9d1f-e7c3d206257f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\original">
       <UniqueIdentifier>{28436e82-ca9c-4638-a419-2e499e83768d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wlac\will_be_added">
+      <UniqueIdentifier>{718cedbb-82f3-411c-b2a7-0400497eb691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wlac\will_be_added\bsd">
+      <UniqueIdentifier>{663e3585-3f91-4707-b6a1-7db94d206370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wlac\will_be_added\netinet">
+      <UniqueIdentifier>{cf353d0b-9850-4e96-9825-6585df274861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wlac\existing">
+      <UniqueIdentifier>{9060f01c-158d-43a1-a29d-a07376276ff7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,22 +53,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\src\.tmp\include\wlac\glob.h">
-      <Filter>Header Files\wlac</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\netinet\ip.h">
-      <Filter>Header Files\wlac\netinet</Filter>
+      <Filter>Header Files\wlac\will_be_added\netinet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\vis.h">
-      <Filter>Header Files\wlac\bsd</Filter>
+      <Filter>Header Files\wlac\will_be_added\bsd</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\wlac_missing.h">
-      <Filter>Header Files\wlac</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\.tmp\include\wlac\paths.h">
-      <Filter>Header Files\wlac</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\.tmp\include\wlac\util.h">
       <Filter>Header Files\wlac</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\openssh_first_include.h">
@@ -75,16 +72,28 @@
       <Filter>Header Files\original</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\string.h">
-      <Filter>Header Files\wlac\bsd</Filter>
+      <Filter>Header Files\wlac\will_be_added\bsd</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\stdlib.h">
-      <Filter>Header Files\wlac\bsd</Filter>
+      <Filter>Header Files\wlac\will_be_added\bsd</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\unistd.h">
-      <Filter>Header Files\wlac\bsd</Filter>
+      <Filter>Header Files\wlac\will_be_added\bsd</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\first_wlac_bsd_include.h">
-      <Filter>Header Files\wlac\bsd</Filter>
+      <Filter>Header Files\wlac\will_be_added\bsd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\glob.h">
+      <Filter>Header Files\wlac\will_be_added</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\paths.h">
+      <Filter>Header Files\wlac\will_be_added</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\wlac\util.h">
+      <Filter>Header Files\wlac\will_be_added</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\contrib\wlac\include\termios.h">
+      <Filter>Header Files\wlac\existing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

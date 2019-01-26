@@ -41,10 +41,10 @@
 #include <sys/socket.h>
 
 #include <fcntl.h>
-#include <stdlib.h>
+#include <bsd/stdlib.h>
 #include <signal.h>
-#include <string.h>
-#include <unistd.h>
+#include <bsd/string.h>
+#include <bsd/unistd.h>
 #include <errno.h>
 
 #include "xmalloc.h"

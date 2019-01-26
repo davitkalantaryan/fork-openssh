@@ -225,6 +225,7 @@
     <ClCompile Include="..\..\..\src\original\ssh.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\contrib\wlac\include\termios.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\openssh_first_include.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\first_wlac_bsd_include.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\stdlib.h" />

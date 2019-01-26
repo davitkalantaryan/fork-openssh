@@ -41,6 +41,12 @@
 // https://www.freebsd.org/cgi/man.cgi?query=explicit_bzero&sektion=3&manpath=freebsd-release-ports
 #define explicit_bzero	bzero
 
+// 
+// header:	termios.h
+// doc:		http://man7.org/linux/man-pages/man4/tty_ioctl.4.html 
+// 
+#define TIOCGWINSZ	0x5413
+
 
 __BEGIN_C_DECLS
 

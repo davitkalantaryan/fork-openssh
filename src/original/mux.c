@@ -29,9 +29,9 @@
 #include <signal.h>
 #include <stdarg.h>
 #include <stddef.h>
-#include <stdlib.h>
+#include <bsd/stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 #include <unistd.h>
 #include <util.h>
 #include <paths.h>

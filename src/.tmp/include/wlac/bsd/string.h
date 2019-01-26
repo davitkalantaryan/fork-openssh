@@ -11,9 +11,13 @@
 
 
 #include <first_includes/common_include_for_headers.h>
+#ifdef LIBBSD_OVERLAY
 #pragma include_alias( <string.h>, <string.h> )
 #pragma include_alias( "string.h", "string.h" )
 #include <string.h>  // should be #include_next
+#else   // #ifdef LIBBSD_OVERLAY
+#include <string.h>
+#endif  // #ifdef LIBBSD_OVERLAY
 #include <stddef.h>
 
 
