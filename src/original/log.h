@@ -15,6 +15,9 @@
 #ifndef SSH_LOG_H
 #define SSH_LOG_H
 
+#include <stdio.h>
+#include <stdarg.h>
+
 /* Supported syslog facilities and levels. */
 typedef enum {
 	SYSLOG_FACILITY_DAEMON,

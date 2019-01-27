@@ -55,15 +55,6 @@ WLAC_TMP_API pid_t waitpid(pid_t a_nPid, int *stat_loc, int a_options)
 
 
 // 
-// https://man.openbsd.org/scan_scaled.3 
-// 
-WLAC_TMP_API int scan_scaled(char *number_w_scale, int64_t *result)
-{
-	return 0;
-}
-
-
-// 
 // https://linux.die.net/man/3/glob 
 // 
 WLAC_TMP_API int glob(const char *pattern, int flags, int(*errfunc) (const char *epath, int eerrno), glob_t *pglob)
@@ -172,14 +163,5 @@ WLAC_TMP_API int asprintf(char **a_strp, const char *a_fmt, ...)
 	return nReturn;
 }
 
-
-// 
-// doc:		https://man.openbsd.org/pledge.2   
-// header:	bsd/unistd.h
-// 
-WLAC_TMP_API int pledge(const char *promises, const char *execpromises)
-{
-	return 0;
-}
 
 __END_C_DECLS

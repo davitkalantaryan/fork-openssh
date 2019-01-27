@@ -22,7 +22,7 @@
 #include <arpa/inet.h>
 
 #include <netdb.h>
-#include <string.h>
+#include <bsd/string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>

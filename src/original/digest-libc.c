@@ -21,10 +21,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef WITH_OPENSSL
 #include <md5.h>
-#include <rmd160.h>
 #include <sha1.h>
 #include <sha2.h>
+#endif
+#include <rmd160.h>
 
 #include "ssherr.h"
 #include "sshbuf.h"
@@ -50,8 +52,10 @@ struct ssh_digest {
 	md_final_fn *md_final;
 };
 
+
 /* NB. Indexed directly by algorithm number */
 const struct ssh_digest digests[SSH_DIGEST_MAX] = {
+#ifdef WITH_OPENSSL
 	{
 		SSH_DIGEST_MD5,
 		"MD5",
@@ -102,6 +106,58 @@ const struct ssh_digest digests[SSH_DIGEST_MAX] = {
 		(md_update_fn *) SHA512Update,
 		(md_final_fn *) SHA512Final
 	}
+#else   // #ifdef WITH_OPENSSL
+    {
+        SSH_DIGEST_MD5,
+        "MD5",
+        0,
+        0,
+        8,
+        (md_init_fn *) 0,
+        (md_update_fn *) 0,
+        (md_final_fn *) 0
+    },
+    {
+        SSH_DIGEST_SHA1,
+        "SHA1",
+        0,
+        0,
+        8,
+        (md_init_fn *) 0,
+        (md_update_fn *) 0,
+        (md_final_fn *) 0
+    },
+    {
+        SSH_DIGEST_SHA256,
+        "SHA256",
+        0,
+        0,
+        8,
+        (md_init_fn *) 0,
+        (md_update_fn *) 0,
+        (md_final_fn *) 0
+    },
+    {
+        SSH_DIGEST_SHA384,
+        "SHA384",
+        0,
+        0,
+        8,
+        (md_init_fn *) 0,
+        (md_update_fn *) 0,
+        (md_final_fn *) 0
+    },
+    {
+        SSH_DIGEST_SHA512,
+        "SHA512",
+        0,
+        0,
+        8,
+        (md_init_fn *) 0,
+        (md_update_fn *) 0,
+        (md_final_fn *) 0
+    }
+#endif  // #ifdef WITH_OPENSSL
 };
 
 static const struct ssh_digest *

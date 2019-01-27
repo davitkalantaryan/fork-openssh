@@ -95,9 +95,9 @@ void	 packet_read_expect(int expected_type);
 #define packet_get_cstring(length_ptr) \
 	ssh_packet_get_cstring(active_state, (length_ptr))
 #define packet_send_debug(fmt, ...) \
-	ssh_packet_send_debug(active_state, (fmt), ##args)
+    ssh_packet_send_debug(active_state, (fmt), ##__VA_ARGS__)
 #define packet_disconnect(fmt, ...) \
-	ssh_packet_disconnect(active_state, (fmt), ##args)
+    ssh_packet_disconnect(active_state, (fmt), ##__VA_ARGS__)
 #define packet_have_data_to_write() \
 	ssh_packet_have_data_to_write(active_state)
 #define packet_not_very_much_data_to_write() \

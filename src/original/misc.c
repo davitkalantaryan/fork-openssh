@@ -41,7 +41,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <netdb.h>
+#include <lwres/netdb.h>
 #include <paths.h>
 #include <pwd.h>
 #include <libgen.h>
@@ -49,9 +49,10 @@
 #include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include <bsd/unistd.h>
+#include <time.h>
 
 #include "xmalloc.h"
 #include "misc.h"
@@ -279,6 +280,7 @@ pwcopy(struct passwd *pw)
 {
 	struct passwd *copy = xcalloc(1, sizeof(*copy));
 
+#if 0  // DK
 	copy->pw_name = xstrdup(pw->pw_name);
 	copy->pw_passwd = xstrdup(pw->pw_passwd);
 	copy->pw_gecos = xstrdup(pw->pw_gecos);
@@ -289,6 +291,15 @@ pwcopy(struct passwd *pw)
 	copy->pw_class = xstrdup(pw->pw_class);
 	copy->pw_dir = xstrdup(pw->pw_dir);
 	copy->pw_shell = xstrdup(pw->pw_shell);
+#else
+    memcpy(copy,pw,sizeof(*copy));
+    copy->pw_name = xstrdup(pw->pw_name);
+    copy->pw_passwd = xstrdup(pw->pw_passwd);
+    copy->pw_gecos = xstrdup(pw->pw_gecos);
+    //copy->pw_class = xstrdup(pw->pw_class);
+    copy->pw_shell = xstrdup(pw->pw_shell);
+    copy->pw_dir = xstrdup(pw->pw_dir);
+#endif
 	return copy;
 }
 

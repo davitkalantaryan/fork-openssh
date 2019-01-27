@@ -38,7 +38,8 @@
 
 #include <errno.h>
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
+#include <bsd/stdlib.h>
 #include <util.h>
 #include <limits.h>
 #include <resolv.h>
@@ -690,7 +691,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
   enum sshkey_serialize_rep opts)
 {
 	int type, ret = SSH_ERR_INTERNAL_ERROR;
-	const char *typename;
+    const char *typename2;
 #ifdef WITH_OPENSSL
 	const BIGNUM *rsa_n, *rsa_e, *dsa_p, *dsa_q, *dsa_g, *dsa_pub_key;
 #endif /* WITH_OPENSSL */
@@ -705,7 +706,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
 			return SSH_ERR_KEY_LACKS_CERTBLOB;
 	}
 	type = force_plain ? sshkey_type_plain(key->type) : key->type;
-	typename = sshkey_ssh_name_from_type_nid(type, key->ecdsa_nid);
+    typename2 = sshkey_ssh_name_from_type_nid(type, key->ecdsa_nid);
 
 	switch (type) {
 #ifdef WITH_OPENSSL
@@ -728,7 +729,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
 			return SSH_ERR_INVALID_ARGUMENT;
 		DSA_get0_pqg(key->dsa, &dsa_p, &dsa_q, &dsa_g);
 		DSA_get0_key(key->dsa, &dsa_pub_key, NULL);
-		if ((ret = sshbuf_put_cstring(b, typename)) != 0 ||
+        if ((ret = sshbuf_put_cstring(b, typename2)) != 0 ||
 		    (ret = sshbuf_put_bignum2(b, dsa_p)) != 0 ||
 		    (ret = sshbuf_put_bignum2(b, dsa_q)) != 0 ||
 		    (ret = sshbuf_put_bignum2(b, dsa_g)) != 0 ||
@@ -738,7 +739,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
 	case KEY_ECDSA:
 		if (key->ecdsa == NULL)
 			return SSH_ERR_INVALID_ARGUMENT;
-		if ((ret = sshbuf_put_cstring(b, typename)) != 0 ||
+        if ((ret = sshbuf_put_cstring(b, typename2)) != 0 ||
 		    (ret = sshbuf_put_cstring(b,
 		    sshkey_curve_nid_to_name(key->ecdsa_nid))) != 0 ||
 		    (ret = sshbuf_put_eckey(b, key->ecdsa)) != 0)
@@ -748,7 +749,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
 		if (key->rsa == NULL)
 			return SSH_ERR_INVALID_ARGUMENT;
 		RSA_get0_key(key->rsa, &rsa_n, &rsa_e, NULL);
-		if ((ret = sshbuf_put_cstring(b, typename)) != 0 ||
+        if ((ret = sshbuf_put_cstring(b, typename2)) != 0 ||
 		    (ret = sshbuf_put_bignum2(b, rsa_e)) != 0 ||
 		    (ret = sshbuf_put_bignum2(b, rsa_n)) != 0)
 			return ret;
@@ -757,7 +758,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
 	case KEY_ED25519:
 		if (key->ed25519_pk == NULL)
 			return SSH_ERR_INVALID_ARGUMENT;
-		if ((ret = sshbuf_put_cstring(b, typename)) != 0 ||
+        if ((ret = sshbuf_put_cstring(b, typename2)) != 0 ||
 		    (ret = sshbuf_put_string(b,
 		    key->ed25519_pk, ED25519_PK_SZ)) != 0)
 			return ret;
@@ -767,7 +768,7 @@ to_blob_buf(const struct sshkey *key, struct sshbuf *b, int force_plain,
 		if (key->xmss_name == NULL || key->xmss_pk == NULL ||
 		    sshkey_xmss_pklen(key) == 0)
 			return SSH_ERR_INVALID_ARGUMENT;
-		if ((ret = sshbuf_put_cstring(b, typename)) != 0 ||
+        if ((ret = sshbuf_put_cstring(b, typename2)) != 0 ||
 		    (ret = sshbuf_put_cstring(b, key->xmss_name)) != 0 ||
 		    (ret = sshbuf_put_string(b,
 		    key->xmss_pk, sshkey_xmss_pklen(key))) != 0 ||
@@ -1815,12 +1816,14 @@ sshkey_from_private(const struct sshkey *k, struct sshkey **pkp)
 	r = 0;
  out:
 	sshkey_free(n);
+#ifdef WITH_OPENSSL
 	BN_clear_free(rsa_n_dup);
 	BN_clear_free(rsa_e_dup);
 	BN_clear_free(dsa_p_dup);
 	BN_clear_free(dsa_q_dup);
 	BN_clear_free(dsa_g_dup);
 	BN_clear_free(dsa_pub_key_dup);
+#endif  // #ifdef WITH_OPENSSL
 
 	return r;
 }
@@ -1950,6 +1953,7 @@ cert_parse(struct sshbuf *b, struct sshkey *key, struct sshbuf *certbuf)
 	return ret;
 }
 
+#ifdef WITH_OPENSSL
 static int
 check_rsa_length(const RSA *rsa)
 {
@@ -1960,6 +1964,7 @@ check_rsa_length(const RSA *rsa)
 		return SSH_ERR_KEY_LENGTH;
 	return 0;
 }
+#endif  // #ifdef WITH_OPENSSL
 
 static int
 sshkey_from_blob_internal(struct sshbuf *b, struct sshkey **keyp,

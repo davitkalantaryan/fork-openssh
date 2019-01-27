@@ -5,6 +5,7 @@
 #include <bsd/unistd.h>
 //#include <bsd/str>
 #include <termios.h>
+#include <lwres/netdb.h>
 
 struct global_confirm {
     TAILQ_ENTRY(global_confirm) entry;

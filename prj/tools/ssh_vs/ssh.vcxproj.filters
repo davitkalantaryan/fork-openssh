@@ -34,6 +34,9 @@
     <Filter Include="Header Files\wlac\existing">
       <UniqueIdentifier>{9060f01c-158d-43a1-a29d-a07376276ff7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\openbsd">
+      <UniqueIdentifier>{5eaca54e-9878-4aaf-99fd-85a2ac00c593}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\original\ssh.c">
@@ -94,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\contrib\wlac\include\termios.h">
       <Filter>Header Files\wlac\existing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\openbsd\openbsd_first_include.h">
+      <Filter>Header Files\openbsd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\.tmp\include\openbsd\rmd160.h">
+      <Filter>Header Files\openbsd</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

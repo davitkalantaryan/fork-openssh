@@ -53,14 +53,14 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
-#include <netdb.h>
+#include <lwres/netdb.h>
 #include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
 #include <termios.h>
-#include <unistd.h>
+#include <bsd/unistd.h>
 
 #include "xmalloc.h"
 #include "ssh.h"
@@ -1274,10 +1274,10 @@ channel_decode_socks4(Channel *c, struct sshbuf *input, struct sshbuf *output)
 		    c->self);
 		return -1;
 	}
-	len = strlen(p);
+    len = strlen((const char*)p);
 	debug2("channel %d: decode socks4: user %s/%d", c->self, p, len);
 	len++; /* trailing '\0' */
-	strlcpy(username, p, sizeof(username));
+    strlcpy(username, (const char*)p, sizeof(username));
 	if ((r = sshbuf_consume(input, len)) != 0) {
 		fatal("%s: channel %d: consume: %s", __func__,
 		    c->self, ssh_err(r));
@@ -1295,7 +1295,7 @@ channel_decode_socks4(Channel *c, struct sshbuf *input, struct sshbuf *output)
 			    "terminated", c->self);
 			return -1;
 		}
-		len = strlen(p);
+        len = strlen((const char*)p);
 		debug2("channel %d: decode socks4a: host %s/%d",
 		    c->self, p, len);
 		len++;				/* trailing '\0' */
@@ -1304,7 +1304,7 @@ channel_decode_socks4(Channel *c, struct sshbuf *input, struct sshbuf *output)
 			    c->self, p);
 			return -1;
 		}
-		c->path = xstrdup(p);
+        c->path = xstrdup((const char*)p);
 		if ((r = sshbuf_consume(input, len)) != 0) {
 			fatal("%s: channel %d: consume: %s", __func__,
 			    c->self, ssh_err(r));
@@ -3988,7 +3988,7 @@ channel_request_rforward_cancel(struct ssh *ssh, struct Forward *fwd)
 	} else {
 		return channel_request_rforward_cancel_tcpip(ssh,
 		    fwd->listen_host,
-		    fwd->listen_port ? fwd->listen_port : fwd->allocated_port);
+            fwd->listen_port ? fwd->listen_port : (int)fwd->allocated_port);
 	}
 }
 

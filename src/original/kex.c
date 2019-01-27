@@ -26,8 +26,8 @@
 
 #include <signal.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
 
 #ifdef WITH_OPENSSL
 #include <openssl/crypto.h>
@@ -451,7 +451,7 @@ kex_input_ext_info(int type, u_int32_t seq, struct ssh *ssh)
 				return SSH_ERR_INVALID_FORMAT;
 			}
 			debug("%s: %s=<%s>", __func__, name, val);
-			kex->server_sig_algs = val;
+            kex->server_sig_algs = (char*)val;
 			val = NULL;
 		} else
 			debug("%s: %s (unrecognised)", __func__, name);

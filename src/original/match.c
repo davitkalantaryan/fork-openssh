@@ -38,8 +38,8 @@
 #include <sys/types.h>
 
 #include <ctype.h>
-#include <stdlib.h>
-#include <string.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
 #include <stdio.h>
 
 #include "xmalloc.h"

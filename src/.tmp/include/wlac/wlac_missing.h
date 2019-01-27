@@ -38,9 +38,6 @@
 #define popen			_popen		// should be dne in stdio.h
 #define pclose			_pclose		// should be dne in stdio.h
 
-// https://www.freebsd.org/cgi/man.cgi?query=explicit_bzero&sektion=3&manpath=freebsd-release-ports
-#define explicit_bzero	bzero
-
 // 
 // header:	termios.h
 // doc:		http://man7.org/linux/man-pages/man4/tty_ioctl.4.html 

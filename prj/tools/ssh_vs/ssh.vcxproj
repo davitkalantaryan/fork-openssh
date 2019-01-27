@@ -226,6 +226,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\contrib\wlac\include\termios.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\openbsd\openbsd_first_include.h" />
+    <ClInclude Include="..\..\..\src\.tmp\include\openbsd\rmd160.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\openssh_first_include.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\first_wlac_bsd_include.h" />
     <ClInclude Include="..\..\..\src\.tmp\include\wlac\bsd\stdlib.h" />

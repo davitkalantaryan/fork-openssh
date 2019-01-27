@@ -25,7 +25,8 @@
 
 #include <sys/types.h>
 
-#include <string.h>
+#include <bsd/string.h>
+#include <bsd/stdlib.h>
 #include <stdio.h>
 
 #include "digest.h"

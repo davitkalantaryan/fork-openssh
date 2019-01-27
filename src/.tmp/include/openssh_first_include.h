@@ -14,10 +14,18 @@ extern "C" {
 #endif
 
 #include <stddef.h>
+#include <openbsd/openbsd_first_include.h>
 
 #define IOV_MAX 1024
 
-void * recallocarray(void *ptr, size_t oldnmemb, size_t newnmemb, size_t size);
+// 
+// header:	stdlib.h   (from openbsd)
+// doc:		https://man.openbsd.org/malloc.3
+// 
+OPEN_BSD_MISSING_FUNC void * recallocarray(void *ptr, size_t oldnmemb, size_t newnmemb, size_t size);
+
+// https://www.freebsd.org/cgi/man.cgi?query=explicit_bzero&sektion=3&manpath=freebsd-release-ports
+#define explicit_bzero	bzero
 
 #ifdef _WIN32
 
@@ -181,9 +189,6 @@ struct evp_pkey_st {
 
 #include <netinet/in.h>
 #include <netinet/ip.h>
-#ifndef IPTOS_DSCP_CS1
-#define IPTOS_DSCP_CS1  5
-#endif
 
 #include <sys/queue.h>
 #if !defined(TAILQ_FOREACH_SAFE) && !defined(TAILQ_FOREACH_SAFE_defined)
@@ -194,14 +199,71 @@ struct evp_pkey_st {
 #define VIS_ALL 0xffffffff
 #endif
 
-//#include <lwres/netdb.h>
+//
+// doc: https://man.openbsd.org/setsockopt.2
+//
+#ifndef SO_RTABLE
+#define SO_RTABLE   1
+#endif
 
-int  scan_scaled(char *number_w_scale, long long *result);		// header: util.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
-void explicit_bzero(void *b, size_t len);						// header: strings.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
-int  pledge(const char *promises, const char *execpromises);	// header: unistd.h; lib: Standars C (https://man.openbsd.org/pledge.2 )
-void freezero(void *ptr, size_t size);							// header: stdlib.h; lib: ??? (https://man.openbsd.org/malloc.3 )
-int  timingsafe_bcmp(const void *b1, const void *b2, size_t len);// header: string.h; lib: ??? (https://man.openbsd.org/timingsafe_bcmp.3 )
-int  asprintf(char **strp, const char *fmt, ...);// header: stdio.h, lib: ??? (http://man7.org/linux/man-pages/man3/asprintf.3.html)
+#include <netinet/ip.h>
+
+#ifndef IPTOS_DSCP_CS0
+#define	IPTOS_DSCP_CS0			IPTOS_CLASS_CS0
+#define	IPTOS_DSCP_CS1			IPTOS_CLASS_CS1
+#define	IPTOS_DSCP_CS2			IPTOS_CLASS_CS2
+#define	IPTOS_DSCP_CS3			IPTOS_CLASS_CS3
+#define	IPTOS_DSCP_CS4			IPTOS_CLASS_CS4
+#define	IPTOS_DSCP_CS5			IPTOS_CLASS_CS5
+#define	IPTOS_DSCP_CS6			IPTOS_CLASS_CS6
+#define	IPTOS_DSCP_CS7			IPTOS_CLASS_CS7
+#endif
+
+#ifndef SYSLOG_DATA_INIT
+#define SYSLOG_DATA_INIT {0}
+#endif
+
+#ifdef SYSLOG_NAMES
+#undef SYSLOG_NAMES // this sould be done only in one source file
+#endif
+#include <sys/syslog.h>
+//#include >
+
+// https://github.com/openbsd/src/blob/master/sys/sys/syslog.h
+struct syslog_data {
+    int	log_stat;
+    const char 	*log_tag;
+    int 	log_fac;
+    int 	log_mask;
+};
+
+
+//#include <lwres/netdb.h>
+#include <X11/Xpoll.h>  // howmany is here
+
+#ifndef WITH_OPENSSL
+typedef int EVP_CIPHER_CTX;
+#endif
+
+// https://www.daemon-systems.org/man/__predict_false.3.html
+#include <sys/cdefs.h>
+#ifndef __predict_false
+#define __predict_false(_expr)  (_expr)
+#endif
+
+//#define explicit_bzero	bzero
+
+int   scan_scaled(char *number_w_scale, long long *result);		// header: util.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
+//void  explicit_bzero(void *b, size_t len);						// header: strings.h; lib: ??? (https://man.openbsd.org/scan_scaled.3)
+int   pledge(const char *promises, const char *execpromises);	// header: unistd.h; lib: Standars C (https://man.openbsd.org/pledge.2 )
+void  freezero(void *ptr, size_t size);							// header: stdlib.h; lib: ??? (https://man.openbsd.org/malloc.3 )
+int   timingsafe_bcmp(const void *b1, const void *b2, size_t len);// header: string.h; lib: ??? (https://man.openbsd.org/timingsafe_bcmp.3 )
+//int   asprintf(char **strp, const char *fmt, ...);// header: stdio.h, lib: ??? (http://man7.org/linux/man-pages/man3/asprintf.3.html)
+int   syslog_r(int Priority,struct syslog_data* SysLogData, const char* Format,...); // header: syslog.h, lib: Standard C (https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.basetrf2/syslog_r.htm)
+int   openlog_r (const char* ID, int LogOption, int Facility, struct syslog_data* SysLogData);// header: syslog.h, lib: Standard C (https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.basetrf2/syslog_r.htm)
+void  closelog_r(struct syslog_data* SysLogData);// header: syslog.h, lib: Standard C (https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.basetrf2/syslog_r.htm)
+void* reallocarray(void *ptr, size_t nmemb, size_t size); // header: bsd/stdlib.h, lib: Standard C (https://www.freebsd.org/cgi/man.cgi?query=reallocarray&sektion=3&manpath=freebsd-release-ports)
+int   bcrypt_pbkdf(const char *pass, size_t pass_len, const uint8_t *salt, size_t salt_len, uint8_t *key, size_t key_len, unsigned int rounds); // header: util.h, lib: ??? (https://man.openbsd.org/bcrypt_pbkdf.3)
 
 #endif  // #ifdef _WIN32
 
